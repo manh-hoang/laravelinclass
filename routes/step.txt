@@ -1,0 +1,4 @@
+step1=create router (chỏ đến controller và gọi đến phương thức muốn thực hiện );
+step2=link to database in file .env (kết nối với cơ sở dưc liệu để thực hiện những thao tác);
+step3=create controller (tạo ra phương thức co tên giống như bên router gọi đến , thực hiện những lệnh và trả về kết quả tại view);
+step3=create view(để nhận lại những giá trị mà từ controlller trả về và show ra UI);
