@@ -1,4 +1,4 @@
-@extends('master')
+@extends('admin.master')
 @section('main')
 <h2 class='text-center'>ADD CATEGORY</h2>
 <form action="" method="POST" role="form">
@@ -8,7 +8,7 @@
 
 <div class="container">
 <div >
-<input type="text" name='name' placeholder="Name">
+<input class="rounded" type="text" name='name' placeholder="Name">
 <div>
 					<label for="name">Status</label>
 					<div class="radio">
@@ -23,11 +23,19 @@
 					</div>
 </div>
 
-<button  type="submit">Add</button>
+<button class="rounded"  type="submit">Add</button>
 </div>
 </form>
 <br>
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <table class="table  ">
   <thead>
     <tr>
@@ -35,6 +43,8 @@
       <th scope="col">ID</th>
       <th scope="col">Name</th>
       <th scope="col">Status</th>
+      <th scope="col">Selection</th>
+
     </tr>
   </thead>
   <tbody>
@@ -46,8 +56,11 @@
 <td>{{$value['status']}}</td>
 
 <td>
-<a href="/edit-category/{{$value['id']}}">Edit</a>
+<a class="btn btn-info" href="/edit-category/{{$value['id']}}">Edit</a>
+<a class="btn btn-danger" href="/delete-category/{{$value['id']}}">Delete</a>
+
 </td>
+
 </tr>
 @endforeach
    

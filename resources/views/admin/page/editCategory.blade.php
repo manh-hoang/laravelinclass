@@ -8,7 +8,7 @@
 
 <div class="container">
 <div >
-<input type="text" name='name' placeholder="Name" value={{$categoryID -> name}} >
+<input type="text" name='name' placeholder="Name" value={{$categoryID ->name}} >
 <div>
 					<label for="name">Status</label>
 					<div class="radio">

@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\uploadController;
+use App\Http\Controllers\admin\DashboardController;
+
+
 
 
 /*
@@ -15,10 +19,17 @@ use App\Http\Controllers\CategoryController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//router admin
+Route::group(['prefix'=>'admin'],function(){
+    Route::get('/add-category',[CategoryController::class,'add'])->name('add-category');
 
-Route::get('/master', function () {
-    return view('master');
+
 });
+
+
+
+
+
 
 Route::get('/blo',[HomeController::class,'blo']);
 // router seleect array come view
@@ -30,12 +41,20 @@ Route::get('/demoDetail',[HomeController::class,'demoDetail'])->name('demo_detai
 //
 Route::get('/demogetdb',[CategoryController::class,'index'])->name('demogetdb');
 
-Route::get('/add-category',[CategoryController::class,'add'])->name('add-category');
 Route::post('/add-category',[CategoryController::class,'create']);
 
 
 Route::get('/edit-category/{id}',[CategoryController::class,'edit'])->name('edit-category');
 Route::post('/edit-category/{id}',[CategoryController::class,'update']);
+
+Route::get('/delete-category/{id}',[CategoryController::class,'delete'])->name('edit-category');
+
+
+Route::get('/upload',[uploadController::class,'upload'])->name('upload');
+Route::post('/upload',[uploadController::class,'postUpload']);
+
+
+
 
 
 
