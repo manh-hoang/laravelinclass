@@ -1,4 +1,4 @@
-@extends('master')
+@extends('admin.master')
 @section('main')
 <h2 class='text-center'>EDIT CATEGORY</h2>
 <form action="" method="POST" role="form">
@@ -8,7 +8,7 @@
 
 <div class="container">
 <div >
-<input type="text" name='name' placeholder="Name" value={{$categoryID ->name}} >
+<input class="rounded" type="text" name='name' placeholder="Name" value={{$categoryID ->name}} >
 <div>
 					<label for="name">Status</label>
 					<div class="radio">
@@ -23,7 +23,7 @@
 					</div>
 </div>
 
-<button  type="submit">Add</button>
+<button class="rounded" type="submit">Add</button>
 </div>
 </form>
 </div>

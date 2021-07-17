@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\uploadController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\admin\DashboardController;
+
+
 
 
 
@@ -21,7 +24,17 @@ use App\Http\Controllers\admin\DashboardController;
 */
 //router admin
 Route::group(['prefix'=>'admin'],function(){
+    //router category
     Route::get('/add-category',[CategoryController::class,'add'])->name('add-category');
+    Route::post('/add-category',[CategoryController::class,'create']);
+    Route::get('/edit-category/{id}',[CategoryController::class,'edit'])->name('edit-category');
+    Route::post('/edit-category/{id}',[CategoryController::class,'update']);
+    Route::get('/delete-category/{id}',[CategoryController::class,'delete'])->name('edit-category');
+    Route::get('/add/{id}',[CategoryController::class,'delete'])->name('edit-category');
+
+
+    //route product 
+    Route::resource('product', ProductController::class);
 
 
 });
@@ -41,13 +54,9 @@ Route::get('/demoDetail',[HomeController::class,'demoDetail'])->name('demo_detai
 //
 Route::get('/demogetdb',[CategoryController::class,'index'])->name('demogetdb');
 
-Route::post('/add-category',[CategoryController::class,'create']);
 
 
-Route::get('/edit-category/{id}',[CategoryController::class,'edit'])->name('edit-category');
-Route::post('/edit-category/{id}',[CategoryController::class,'update']);
 
-Route::get('/delete-category/{id}',[CategoryController::class,'delete'])->name('edit-category');
 
 
 Route::get('/upload',[uploadController::class,'upload'])->name('upload');

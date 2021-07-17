@@ -22,7 +22,7 @@ class CategoryController extends Controller
         ]);
         $category = Category::create($request->all());
         if($category){
-            return redirect('add-category');
+            return redirect('admin/add-category');
             return;
         }
         else{
@@ -33,14 +33,14 @@ class CategoryController extends Controller
         //dd($id);
         $categoryID=Category::find($id);
         //dd($categoryID);
-        return view ('editCategory',compact('categoryID'));
+        return view ('admin.page.editCategory',compact('categoryID'));
         
     }
     public function update(Request $req , $id){
         $categoryID=Category::find($id);
         $categoryID->update($req->all());
         if($categoryID){
-            return redirect('add-category')->with('thongbao','them moi thanh cong');
+            return redirect('admin/add-category')->with('thongbao','sua thanh cong');
         }
         else{
             dd('eror');
@@ -50,7 +50,7 @@ class CategoryController extends Controller
 
     public function delete($id){
         $categoryID=Category::find($id);
-        $deleteID= $categoryID->delete();
+         $categoryID->delete();
         return redirect()->back();
 
     }
